@@ -1,46 +1,22 @@
-import Mycomponent from "./component/Mycomponent";
-import { useAppDispatch, useAppSelector } from "./redux/hooks";
-import { addItem } from "./redux/slice/cartSlice";
+import AddTodo from "./component/AddTodo";
+import TodoCo from "./component/TodoCo";
 
 function App() {
-  const count = useAppSelector((state) => state.cart);
-  const dispatch = useAppDispatch();
-  const handleItem = (e: string) => {
-    dispatch(addItem(e));
-  };
-
   return (
     <>
-      <div className="bg-slate-300 text-white items-center justify-center flex flex-col w-full h-screen p-4">
-        <div
-          className="w-1/2 h-1/2 bg-slate-500 rounded-xl flex flex-col  items-center justify-center
-        
-        shadow-purple-600 shadow-xl "
-        >
-          <h1 className="mb-2 font-serif text-2xl">{count}</h1>
-          <div>
-            <button
-              className="bg-purple-400 rounded-xl p-2 mr-2 "
-              onClick={() => handleItem("Harry Potter")}
-            >
-              Add HarryPotter
-            </button>
-            <button
-              className="bg-purple-400 rounded-xl p-2 mr-2 "
-              onClick={() => handleItem("Twilight")}
-            >
-              Add Twilight
-            </button>
-            <button
-              className="bg-purple-400 rounded-xl p-2 mr-2 "
-              onClick={() => handleItem("Harry Potter")}
-            >
-              Add HarryPotter
-            </button>
-          </div>
+      <div
+        className="bg-slate-300  items-center 
+      flex flex-col w-full h-screen p-4"
+      >
+        <div className="mt-2 mb-10">
+          <p>learn about todo</p>
         </div>
+        <div>
+          <AddTodo />
+        </div>
+
+        <TodoCo />
       </div>
-      <Mycomponent />
     </>
   );
 }

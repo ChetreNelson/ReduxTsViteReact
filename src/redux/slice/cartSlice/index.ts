@@ -5,6 +5,7 @@ export const cartSlice = createSlice({
   name: "cart",
   reducers: {
     addItem: (state, action) => action.payload,
+    
   },
 });
 export const { addItem } = cartSlice.actions;
