@@ -10,11 +10,25 @@ const PracticeForm = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
-  } = useForm<FormFields>();
+  } = useForm<FormFields>({
+    defaultValues:{
+        email:"test@gmail.com"
+    }
+  });
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+    try {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+       // throw new Error()
+        console.log(data);
+        
+    } catch (error) {
+        setError("email",{
+            message:"Email is already taken"
+        })
+    }
+   
   };
 
   return (
@@ -35,7 +49,10 @@ const PracticeForm = () => {
         <input
           {...register("password", {
             required: "Password is required",
-            minLength: 8,
+            minLength: {
+                value:5,
+                message:"min length is 5"
+            },
           })}
           type="password"
           placeholder="Enter password"
