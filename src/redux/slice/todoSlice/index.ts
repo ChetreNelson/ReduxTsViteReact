@@ -10,7 +10,7 @@ const initialState: TodoState = {
 };
 export const todoSlice = createSlice({
   initialState,
-  name: "todo",
+  name: "todos",
   reducers: {
     addTodo: (state, action) => {
       const todo = {
@@ -25,8 +25,18 @@ export const todoSlice = createSlice({
     removeTodo: (state, action) => {
       state.todos = state.todos.filter((todo) => todo.id != action.payload);
     },
+    updateTodo:(state,action)=>{
+        const index = state.todos.findIndex(todo => todo.id == action.payload.id);
+
+        // If the todo item with the given ID exists
+        if (index !== -1) {
+          // Update the text of the todo item
+          state.todos[index].text = action.payload.text;
+        }
+        
+    }
   },
 });
 
-export const { addTodo, removeTodo } = todoSlice.actions;
+export const { addTodo, removeTodo,updateTodo } = todoSlice.actions;
 export default todoSlice.reducer;
