@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import counterslice from "../slice";
 import cartSlice from "../slice/cartSlice";
 import todoSlice from "../slice/todoSlice";
+import Login from "../slice/Login";
 
 export const store = configureStore({
   reducer: {
     counter: counterslice,
     cart: cartSlice,
-    todo:todoSlice
+    todo: todoSlice,
+    form: Login,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

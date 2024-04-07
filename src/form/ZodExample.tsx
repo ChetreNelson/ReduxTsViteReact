@@ -32,7 +32,7 @@ const ZodExample = () => {
 
  }
   return (
-    <div>
+    <div >
       <div>
         <form  onSubmit={handleSubmit(onSubmit)}>
           <div>
