@@ -11,29 +11,32 @@ const PracticeForm = () => {
     register,
     handleSubmit,
     setError,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
-    defaultValues:{
-        email:"test@gmail.com"
-    }
+    defaultValues: {
+      email: "test@gmail.com",
+    },
   });
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-       // throw new Error()
-        console.log(data);
-        
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // throw new Error()
+      console.log(data);
+      reset();
     } catch (error) {
-        setError("email",{
-            message:"Email is already taken"
-        })
+      setError("email", {
+        message: "Email is already taken",
+      });
     }
-   
   };
 
   return (
     <div>
-      <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="flex flex-col  justify-center w-full h-full shadow-lg"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         Email:
         <input
           {...register("email", {
@@ -50,14 +53,16 @@ const PracticeForm = () => {
           {...register("password", {
             required: "Password is required",
             minLength: {
-                value:5,
-                message:"min length is 5"
+              value: 5,
+              message: "min length is 5",
             },
           })}
           type="password"
           placeholder="Enter password"
         />
-        {errors && <span className="text-red-500">{errors.password?.message}</span>}
+        {errors && (
+          <span className="text-red-500">{errors.password?.message}</span>
+        )}
         <button disabled={isSubmitting} type="submit">
           {isSubmitting ? "Loading..." : "Submit"}
         </button>

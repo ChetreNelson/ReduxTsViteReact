@@ -9,20 +9,22 @@ const ReactHookForm = () => {
     register,
     handleSubmit,
     setError,
-    formState: { errors,isSubmitting },
-  } = useForm<FormFields>();
-  const onSubmit: SubmitHandler<FormFields> =async (data) => {
+    formState: { errors, isSubmitting },
+  } = useForm<FormFields>({
+    defaultValues: {
+        email: "chetreenelson8@gmail.com",
+      },
+  });
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-       
-        await new Promise((resolve)=>setTimeout(resolve,1000))
-        throw new Error()
-    console.log(data);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      throw new Error();
+      console.log(data);
     } catch (error) {
-        setError("root",{
-                message:"email already taken"
-        })
+      setError("root", {
+        message: "email already taken",
+      });
     }
-    
   };
   return (
     <div>
@@ -33,35 +35,43 @@ const ReactHookForm = () => {
             <input
               {...register("email", {
                 required: "Email is required",
-               validate:(value)=>{
-                if(!value.includes('@')){
-                    return "Email must include @"
-                }
-                return true;
-               }
+                validate: (value) => {
+                  if (!value.includes("@")) {
+                    return "Email must include @";
+                  }
+                  return true;
+                },
               })}
               type="text"
               placeholder="Enter Email"
             />
           </div>
-                {errors.email && <div className="text-red-600">{errors.email.message}</div>}
+          {errors.email && (
+            <div className="text-red-600">{errors.email.message}</div>
+          )}
           <div>
             Password:
             <input
               {...register("password", {
-                required: "password is required",   
+                required: "password is required",
                 minLength: {
-                value:5,
-                message:"Password most be of min 5 length"
-            },
+                  value: 5,
+                  message: "Password most be of min 5 length",
+                },
               })}
               type="password"
               placeholder="Enter Password"
             />
-            {errors.password && <div className="text-red-600">{errors.password.message}</div>}
+            {errors.password && (
+              <div className="text-red-600">{errors.password.message}</div>
+            )}
           </div>
-          <button disabled={isSubmitting} type="submit">{isSubmitting ?"Loading...":"Submit"}</button>
-          {errors.root && <div className="text-red-600">{errors.root.message}</div>}
+          <button disabled={isSubmitting} type="submit">
+            {isSubmitting ? "Loading..." : "Submit"}
+          </button>
+          {errors.root && (
+            <div className="text-red-600">{errors.root.message}</div>
+          )}
         </form>
       </div>
     </div>
