@@ -1,15 +1,17 @@
 import React, { FormEvent, useState } from "react";
-import { useAddPostsMutation, useGetPostsQuery } from "../redux/api/api";
+import {
+  useAddPostsMutation,
+  useGetPostsQuery,
+} from "../redux/api/api";
 import PostCard from "./PostCard";
-import { useNavigate } from "react-router-dom";
 
 const Posts = () => {
-  const { isLoading, isError, data, isSuccess } = useGetPostsQuery("");
+  const { isLoading, isError, data } = useGetPostsQuery("");
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
   const [addPosts] = useAddPostsMutation();
 
-  const navigate = useNavigate();
+  
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,8 +21,8 @@ const Posts = () => {
       id: Math.random() * 1000,
     };
     addPosts(post);
-    navigate("/");
   };
+
   console.log(isError, isLoading, data);
   return (
     <div>

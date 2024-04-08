@@ -1,39 +1,9 @@
 {
   "posts": [
     {
-      "title": "post1",
-      "body": "this is post1",
-      "id": "1"
-    },
-    {
-      "title": "post2",
-      "body": "this is post2",
-      "id": "2"
-    },
-    {
-      "title": "post3",
-      "body": "this is post3",
-      "id": "3"
-    },
-    {
-      "id": 714.7115521749372,
-      "title": "post5",
-      "body": "this is new post"
-    },
-    {
-      "id": 333.082862062732,
-      "title": "post 4",
-      "body": "this is post 4"
-    },
-    {
-      "id": 713.7798099816877,
-      "title": "post6",
-      "body": "this is post6"
-    },
-    {
-      "id": 817.027871248065,
-      "title": "Post7",
-      "body": "this is post7"
+      "title": "Nepal",
+      "body": "Nepal is my ",
+      "id": "250.3017980201423"
     }
   ]
 }
