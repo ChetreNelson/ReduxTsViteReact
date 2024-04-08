@@ -14,10 +14,13 @@ import LoginForm from "./form/LoginForm";
 import Home from "../src/pages/home"
 import AboutPage from "./pages/aboutpage";
 import UserInfoPage from "./pages/userInfopage";
+import Posts from "./rtkquery/Posts";
 
 function App() {
   return (
     <div className="flex  h-screen w-full bg-yellow-400   flex-col  items-center ">
+
+    
       {/* <AddTodo />
       
       <Routes> 
@@ -28,8 +31,10 @@ function App() {
       {/* <ZodExample/> */}
       {/* <Navbar /> */}
       <Routes>
-        <Route path="/" element={<ZodExample />} />
+        {/* <Route path="/" element={<ZodExample />} /> */}
+        <Route path="/" element={<Posts />}/>
         <Route path="/login" element={<LoginForm />} />
+
         <Route path="/home" element={<Home/>} />
 
         <Route path="/about"  element={<AboutPage/>}/>

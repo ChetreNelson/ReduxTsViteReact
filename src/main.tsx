@@ -5,14 +5,16 @@ import './index.css'
 import { Provider } from 'react-redux'
 import { store } from './redux/store/index.ts'
 import { BrowserRouter } from 'react-router-dom'
+import { ApiProvider } from '@reduxjs/toolkit/query/react'
+import { myAPi } from './redux/api/api.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Provider store={store}>
+    <ApiProvider api={myAPi}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    </Provider>
+    </ApiProvider>
    
   
   </React.StrictMode>,

@@ -3,9 +3,11 @@ import counterslice from "../slice";
 import cartSlice from "../slice/cartSlice";
 import todoSlice from "../slice/todoSlice";
 import Login from "../slice/Login";
+import { myAPi } from "../api/api";
 
 export const store = configureStore({
   reducer: {
+    myapi:myAPi.reducer,
     counter: counterslice,
     cart: cartSlice,
     todo: todoSlice,
