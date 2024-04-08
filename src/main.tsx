@@ -10,11 +10,11 @@ import { myAPi } from './redux/api/api.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ApiProvider api={myAPi}>
+    <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    </ApiProvider>
+    </Provider>
    
   
   </React.StrictMode>,
