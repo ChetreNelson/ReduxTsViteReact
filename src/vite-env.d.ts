@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-interface Post {
+export interface Post {
   title: string;
   body: string;
   id: number;

@@ -3,6 +3,7 @@ import {
   useDeletePostsMutation,
   useUpdatePostsMutation,
 } from "../redux/api/api";
+import { Post } from "../vite-env";
 
 const PostCard = ({ post }: { post: Post }) => {
   const [deletePosts] = useDeletePostsMutation();
@@ -16,7 +17,14 @@ const PostCard = ({ post }: { post: Post }) => {
     deletePosts(post.id);
   };
   const handleUpdate = () => {
-    updatePosts({ id: post.id, post: { title, body } });
+    updatePosts({
+      id: post.id,
+      post: {
+        title,
+        body,
+        id: post.id
+      },
+    });
   };
   return (
     <div>

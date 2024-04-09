@@ -4,15 +4,14 @@ import {
   useGetPostsQuery,
 } from "../redux/api/api";
 import PostCard from "./PostCard";
+import { Post } from "../vite-env";
 
 const Posts = () => {
   const { isLoading, isError, data } = useGetPostsQuery("");
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
   const [addPosts] = useAddPostsMutation();
-
   
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const post: Post = {

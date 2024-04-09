@@ -15,6 +15,7 @@ import Home from "../src/pages/home"
 import AboutPage from "./pages/aboutpage";
 import UserInfoPage from "./pages/userInfopage";
 import Posts from "./rtkquery/Posts";
+import TanStackTable from "./table/TanStackTable";
 
 function App() {
   return (
@@ -31,8 +32,11 @@ function App() {
       {/* <ZodExample/> */}
       {/* <Navbar /> */}
       <Routes>
+     
+
+      <Route path="/" element={<TanStackTable />} />
         {/* <Route path="/" element={<ZodExample />} /> */}
-        <Route path="/" element={<Posts />}/>
+        {/* <Route path="/" element={<Posts />}/> */}
         <Route path="/login" element={<LoginForm />} />
 
         <Route path="/home" element={<Home/>} />
