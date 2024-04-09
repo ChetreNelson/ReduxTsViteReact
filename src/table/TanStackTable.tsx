@@ -63,7 +63,7 @@ const TanStackTable = () => {
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    // enableSorting: true,
+
     state: {
       sorting: sorting,
       globalFilter: filter,
@@ -89,11 +89,12 @@ const TanStackTable = () => {
 
   console.log(data);
   return (
-    <div className="w3-container w-2/3">
-      <input
+    <div className="w3-container w-2/3 mt-10">
+      <input className="mb-2 outline-none"
         type="text"
-        placeholder="serach..."
+        placeholder="Search Table..."
         onChange={(e) => setFilter(e.target.value)}
+
       />
       <table className="w3-table w3-striped w3-bordered">
         <thead>
@@ -110,7 +111,11 @@ const TanStackTable = () => {
                       header.getContext()
                     )}
                   </div>
-                  {{ asc: "⬆️", desc: "⬇️" }[header.column.getIsSorted() ?? null]}
+                  {/* {
+                    { asc: "⬆️", desc: "⬇️" }[
+                      header.column.getIsSorted() ?? null
+                    ]
+                  } */}
                 </th>
               ))}
             </tr>
@@ -131,6 +136,7 @@ const TanStackTable = () => {
           ))}
         </tbody>
       </table>
+      <div className="mt-2 space-x-4">
       <button
         disabled={!table.getCanPreviousPage()}
         onClick={() => table.firstPage()}
@@ -148,6 +154,7 @@ const TanStackTable = () => {
       >
         LastPage
       </button>
+
       <button
         onClick={() => table.previousPage()}
         className="px-2 bg-slate-500 rounded-lg py-2 mr-1
@@ -165,6 +172,16 @@ const TanStackTable = () => {
       >
         NextPage
       </button>
+      </div>
+      
+      <div>
+        <p>
+          page:
+          {`${
+            table.getState().pagination.pageIndex + 1
+          } of ${table.getPageCount()}`}
+        </p>
+      </div>
     </div>
   );
 };
